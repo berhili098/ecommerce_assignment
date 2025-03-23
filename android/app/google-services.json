@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "309350952025",
+    "project_id": "test-coupon-d642e",
+    "storage_bucket": "test-coupon-d642e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309350952025:android:185c89c492fcb65fa65548",
+        "android_client_info": {
+          "package_name": "appcave.freedemy.freecourses.coupons.learning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSTIAZvWhdYSfmGiqup2aXNkMlG9Ri9Go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309350952025:android:7abf2170d4adf68fa65548",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce_assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSTIAZvWhdYSfmGiqup2aXNkMlG9Ri9Go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309350952025:android:f4c8347e3e9f40f2a65548",
+        "android_client_info": {
+          "package_name": "com.example.freedemy_poster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSTIAZvWhdYSfmGiqup2aXNkMlG9Ri9Go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
