@@ -1,4 +1,7 @@
+import 'package:ecommerce_assignment/config/di/dependency_injection.dart';
 import 'package:ecommerce_assignment/core/exceptions/auth_exception.dart';
+import 'package:ecommerce_assignment/core/overlays/toast.dart';
+import 'package:ecommerce_assignment/core/utils/helpers/connection_handler.dart';
 import 'package:ecommerce_assignment/features/auth/domain/entities/user.dart';
 import 'package:ecommerce_assignment/features/auth/domain/repositories/auth_repository.dart';
 import 'package:ecommerce_assignment/features/auth/presentation/state/auth_state.dart';
@@ -10,6 +13,8 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthRepository authRepository;
 
   AuthCubit(this.authRepository) : super(AuthInitial());
+
+  bool get _connectedToInternet => getIt<ConnectionHandler>().connected;
 
   Future<User?> checkAuth() async {
     try {
@@ -23,6 +28,12 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> login({required String email, required String password}) async {
+    if (!_connectedToInternet) {
+      AppToast.show("No internet connection");
+      emit(AuthError("No internet connection"));
+      return;
+    }
+
     if (state is AuthLoading) return;
 
     emit(AuthLoading());
@@ -35,6 +46,12 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signup({required String email, required String password}) async {
+    if (!_connectedToInternet) {
+      AppToast.show("No internet connection");
+      emit(AuthError("No internet connection"));
+      return;
+    }
+
     if (state is AuthLoading) return;
 
     emit(AuthLoading());
@@ -47,6 +64,12 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> logout() async {
+    if (!_connectedToInternet) {
+      AppToast.show("No internet connection");
+      emit(AuthError("No internet connection"));
+      return;
+    }
+
     if (state is AuthLoading) return;
 
     emit(AuthLoading());
@@ -59,6 +82,12 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> createProfile(User user) async {
+    if (!_connectedToInternet) {
+      AppToast.show("No internet connection");
+      emit(AuthError("No internet connection"));
+      return;
+    }
+
     if (state is AuthLoading) return;
 
     emit(AuthLoading());

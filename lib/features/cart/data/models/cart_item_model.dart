@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 part 'cart_item_model.g.dart';
 
 @HiveType(typeId: 1)
-class CartItemModel extends HiveObject {
+class CartItemModel {
   @HiveField(0)
   final ProductModel product;
 
@@ -15,23 +15,14 @@ class CartItemModel extends HiveObject {
   CartItemModel({required this.product, required this.quantity});
 
   CartItemModel copyWith({ProductModel? product, int? quantity}) {
-    return CartItemModel(
-      product: product ?? this.product,
-      quantity: quantity ?? this.quantity,
-    );
+    return CartItemModel(product: product ?? this.product, quantity: quantity ?? this.quantity);
   }
 
   factory CartItemModel.fromEntity(CartItem item) {
-    return CartItemModel(
-      product: ProductModel.fromEntity(item.product),
-      quantity: item.quantity,
-    );
+    return CartItemModel(product: ProductModel.fromEntity(item.product), quantity: item.quantity);
   }
 
   CartItem toEntity() {
-    return CartItem(
-      product: product.toEntity(),
-      quantity: quantity,
-    );
+    return CartItem(product: product.toEntity(), quantity: quantity);
   }
 }

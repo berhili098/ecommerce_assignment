@@ -17,7 +17,8 @@ class ProductListingScreen extends StatefulWidget {
   State<ProductListingScreen> createState() => _ProductListingScreenState();
 }
 
-class _ProductListingScreenState extends State<ProductListingScreen> {
+class _ProductListingScreenState extends State<ProductListingScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   initState() {
     super.initState();
@@ -28,6 +29,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -90,4 +92,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -1,5 +1,6 @@
 import 'package:ecommerce_assignment/config/theme/theme_cubit.dart';
 import 'package:ecommerce_assignment/core/enums/order_status.dart';
+import 'package:ecommerce_assignment/core/utils/helpers/connection_handler.dart';
 import 'package:ecommerce_assignment/features/auth/data/data_sources/auth_remote_datasource.dart';
 import 'package:ecommerce_assignment/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:ecommerce_assignment/features/auth/domain/repositories/auth_repository.dart';
@@ -49,14 +50,14 @@ Future<void> injectDependencies() async {
   getIt.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(getIt.get<AuthDataSource>()),
   );
-  getIt.registerSingleton(AuthCubit(getIt.get<AuthRepository>()));
+  getIt.registerLazySingleton(() => AuthCubit(getIt.get<AuthRepository>()));
 
   // Product
   getIt.registerLazySingleton<ProductDataSource>(() => ProductRemoteDatasource());
   getIt.registerLazySingleton<ProductRepository>(
     () => ProductRepositoryImpl(getIt.get<ProductDataSource>()),
   );
-  getIt.registerSingleton(ProductCubit(getIt.get<ProductRepository>()));
+  getIt.registerLazySingleton(() => ProductCubit(getIt.get<ProductRepository>()));
 
   // Cart
   getIt.registerLazySingleton<CartDataSource>(
@@ -65,7 +66,7 @@ Future<void> injectDependencies() async {
   getIt.registerLazySingleton<CartRepository>(
     () => CartRepositoryImpl(getIt.get<CartDataSource>()),
   );
-  getIt.registerSingleton(CartCubit(getIt.get<CartRepository>()));
+  getIt.registerLazySingleton(() => CartCubit(getIt.get<CartRepository>()));
 
   // order
   getIt.registerLazySingleton<OrderDataSource>(
@@ -74,7 +75,7 @@ Future<void> injectDependencies() async {
   getIt.registerLazySingleton<OrderRepository>(
     () => OrderRepositoryImpl(getIt.get<OrderDataSource>()),
   );
-  getIt.registerSingleton(OrderCubit(getIt.get<OrderRepository>()));
+  getIt.registerLazySingleton(() => OrderCubit(getIt.get<OrderRepository>()));
 
   // review
   getIt.registerLazySingleton<ReviewDataSource>(
@@ -83,8 +84,11 @@ Future<void> injectDependencies() async {
   getIt.registerLazySingleton<ReviewRepository>(
     () => ReviewRepositoryImpl(getIt.get<ReviewDataSource>()),
   );
-  getIt.registerSingleton(ReviewCubit(getIt.get<ReviewRepository>()));
+  getIt.registerLazySingleton(() => ReviewCubit(getIt.get<ReviewRepository>()));
 
   // theme
-  getIt.registerSingleton(ThemeCubit());
+  getIt.registerLazySingleton(() => ThemeCubit());
+
+  // connectivity
+  getIt.registerSingleton<ConnectionHandler>(ConnectionHandler(), dispose: (ch) => ch.dispose());
 }

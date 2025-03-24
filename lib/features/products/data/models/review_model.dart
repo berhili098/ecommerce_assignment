@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 part 'review_model.g.dart';
 
 @HiveType(typeId: 4)
-class ReviewModel extends HiveObject {
+class ReviewModel {
   @HiveField(0)
   final int productId;
 
