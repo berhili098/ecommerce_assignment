@@ -1,4 +1,5 @@
 import 'package:ecommerce_assignment/features/orders/data/models/order_model.dart';
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 abstract class OrderDataSource {
@@ -21,7 +22,7 @@ class OrderLocalDatasource implements OrderDataSource {
     try {
       await orderBox.put(order.id, order);
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 }

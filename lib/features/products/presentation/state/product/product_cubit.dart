@@ -35,7 +35,7 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  void searchProducts(query) {
+  void searchProducts(String query) {
     if (query.isEmpty) {
       emit(ProductLoaded(_products));
       return;

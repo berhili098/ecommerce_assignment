@@ -1,6 +1,7 @@
 import 'package:ecommerce_assignment/features/orders/domain/entities/order.dart';
 import 'package:ecommerce_assignment/features/orders/domain/repositories/order_repository.dart';
 import 'package:ecommerce_assignment/features/orders/presentation/state/order_state.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderCubit extends Cubit<OrderState> {
@@ -23,7 +24,7 @@ class OrderCubit extends Cubit<OrderState> {
     emit(OrderLoading());
     try {
       final orders = await orderRepository.getOrders();
-      print("Orders fetched: $orders");
+      debugPrint("Orders fetched: $orders");
       emit(OrderLoaded(orders));
     } catch (e) {
       emit(OrderError(e.toString()));

@@ -1,5 +1,5 @@
 final class FormValidators {
-  static String? email(value) {
+  static String? email(String? value) {
     if (value == null || value.isEmpty) {
       return "Email cannot be empty";
     }
@@ -11,14 +11,14 @@ final class FormValidators {
     return null;
   }
 
-  static String? password(value) {
+  static String? password(String? value) {
     if (value == null || value.length < 6) {
       return "Password must be at least 6 characters";
     }
     return null;
   }
 
-  static String? name(value) {
+  static String? name(String? value) {
     if (value == null || value.isEmpty) {
       return "Name cannot be empty";
     }
@@ -29,7 +29,7 @@ final class FormValidators {
     return null;
   }
 
-  static String? phone(value) {
+  static String? phone(String? value) {
     if (value == null || value.isEmpty) {
       return "Phone number cannot be empty";
     }
@@ -39,7 +39,7 @@ final class FormValidators {
     return null;
   }
 
-  static String? address(value) {
+  static String? address(String? value) {
     if (value == null || value.isEmpty) {
       return "Address cannot be empty";
     }
